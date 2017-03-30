@@ -1,0 +1,12 @@
+
+set modDate to (7)
+
+
+tell application "Finder"
+	try
+		delete (files of entire contents of folder "BUTT Archives" of folder "Music" of folder "ckutsys" of folder "Users" of startup disk whose modification date is less than ((current date)) - modDate * days)
+	on error theErr number theErrNumber
+		display dialog theErr & return & "The error number: " & theErrNumber
+	end try
+	empty trash
+end tell
